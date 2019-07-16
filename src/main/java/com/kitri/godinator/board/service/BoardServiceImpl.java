@@ -222,10 +222,5 @@ public class BoardServiceImpl implements BoardService {
 		return sqlSession.getMapper(BoardDao.class).listHotArticle(parameter);
 	}
 
-	@Override
-	public List<BbsDto> mainHotArticle() {
-		
-		return sqlSession.getMapper(BoardDao.class).mainHotArticle();
-	}
 
 }
