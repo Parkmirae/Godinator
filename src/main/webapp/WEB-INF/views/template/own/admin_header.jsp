@@ -32,8 +32,27 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <script src="${root}/js/jquery.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	$("#adminMemberBtn").click(function() {
+		location.href = "${root }/member/view";
+	});
+	
+	$("#adminSchoolBtn").click(function() {
+		location.href = "${root }/school/main";
+	});
+	
+	$("#adminReportBtn").click(function() {
+		location.href = "${root }/admin/report";
+	});
+	
+	$("#adminStatisticsBtn").click(function() {
+		location.href = "${root }/admin/statistics";
+	});
+	
+	
 	if("${withdrawMsg}"!=""){
 		alert("${withdrawMsg}");
 	}
@@ -46,7 +65,7 @@ $(document).ready(function() {
 	
 		Kakao.init('18f3deb02686176a9f41dc7fd612c3d0');
 	$("#logoutBtn").click(function() {
-		//alert("로그아웃 되었습니다.")
+		alert("로그아웃 되었습니다.")
 		//$("#logoutBtn").attr("method","post").attr("action","${root}/user/logout").submit();
 				var isKakao = $(this).attr("data-pass");
 				if(isKakao == 'kakao'){
@@ -56,7 +75,7 @@ $(document).ready(function() {
 							type: 'post',
 							success: function(msg) {
 								alert(msg);
-								location.href="${root}/board/main";
+								location.href="${root}/view/user/main.jsp";
 							} 
 						});
 					});
@@ -66,7 +85,7 @@ $(document).ready(function() {
 						type: 'post',
 						success: function(msg) {
 							alert(msg);
-							location.href="${root}/board/main";
+							location.href="${root}/view/user/main.jsp";
 						} 
 					});
 				}
@@ -80,17 +99,16 @@ $(document).ready(function() {
 	});
 	});
 </script>
+
+<style type="text/css">
+	.adminBtn :hover {
+		cursor: pointer;
+	}
+</style>
+
 </head>
 
 <body class="is-preload">
-
-
-<form id="editForm" name="editForm">
-   <input type="hidden" name="userInfo" id="userInfo" value="${userInfo}">
-   <input type="hidden" name="hName" id="hName" value="${hName}">
-   <input type="hidden" name="uName" id="uName" value="${uName}">
-   <input type="hidden" name="cateList" id="cateList" value="${cateList}">
-</form>
 <div id="wrapper">
 	<div id="main">
 		<div class="inner">
@@ -106,7 +124,7 @@ $(document).ready(function() {
 					<li><a href="" id="logoutBtn">로그아웃</a></li>
 					<li><a href="" id="moveMypageBtn">회원정보수정</a></li>
 					<c:if test="${sessionScope.userInfo.userId == 'admin'}">
-						<li><a href="${root}/member/view" id="logoutBtn">관리자페이지</a></li>
+						<li><a href="${root}/member/main" id="logoutBtn">관리자페이지</a></li>
 					</c:if>	
 				</c:if>	
 				</ul>
