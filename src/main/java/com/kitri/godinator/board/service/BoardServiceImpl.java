@@ -188,13 +188,10 @@ public class BoardServiceImpl implements BoardService {
 					sqlSession.getMapper(BoardDao.class).updateLike(loveDto);
 
 					check = "이미 '좋아요'를 누른 게시물입니다";
-
 				}
-
 			}
 
 		}
-
 		return check;
 	}
 
